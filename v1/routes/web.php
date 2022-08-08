@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PermissaoController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('permissao', PermissaoController::class);
+Route::resource('perfil', PerfilController::class);
+Route::resource('usuario', UsuarioController::class);
+

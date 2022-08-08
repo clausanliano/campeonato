@@ -41,4 +41,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function perfis()
+    {
+        return $this->belongsToMany(Perfil::class);
+    }
+
+    public function temPermissao(Permissao $permissao)
+    {
+        return $this->possuiAlgumPerfil($permissao->perfis);
+    }
+
+
+    public function possuiAlgumPerfil($perfis)
+    {
+        foreach ($perfis as $perfil) {
+            return $this->perfis->contains('nome', $perfil->nome);
+        }
+
+        return false;
+    }
+
 }

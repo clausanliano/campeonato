@@ -253,6 +253,29 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+
+        ['header' => 'Segurança'],
+        [
+            'text' => 'Usuário',
+            'url'  => 'usuario',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Perfil',
+            'url'  => 'perfil',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Permissão',
+            'url'  => 'permissao',
+            'icon' => 'fas fa-fw fa-list',
+        ],
+
+
+
+
+
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
