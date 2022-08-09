@@ -26,7 +26,8 @@ class PermissaoController extends Controller
      */
     public function create()
     {
-        //
+        $permissao = new Permissao();
+        return view('permissao.edit')->with(compact('permissao'));
     }
 
     /**
@@ -37,7 +38,8 @@ class PermissaoController extends Controller
      */
     public function store(StorePermissaoRequest $request)
     {
-        //
+        Permissao::create($request->validated());
+        return redirect()->route('permissao.index');
     }
 
     /**
@@ -48,7 +50,7 @@ class PermissaoController extends Controller
      */
     public function show(Permissao $permissao)
     {
-        //
+        return view('permissao.show')->with(compact('permissao'));
     }
 
     /**
@@ -59,7 +61,7 @@ class PermissaoController extends Controller
      */
     public function edit(Permissao $permissao)
     {
-        //
+        return view('permissao.edit')->with(compact('permissao'));
     }
 
     /**
@@ -71,7 +73,8 @@ class PermissaoController extends Controller
      */
     public function update(UpdatePermissaoRequest $request, Permissao $permissao)
     {
-        //
+        $permissao->update($request->validated());
+        return redirect()->route('permissao.index');
     }
 
     /**
@@ -82,6 +85,7 @@ class PermissaoController extends Controller
      */
     public function destroy(Permissao $permissao)
     {
-        //
+        $permissao->delete();
+        return redirect()->route('permissao.index');
     }
 }
