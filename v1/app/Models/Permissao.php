@@ -18,4 +18,6 @@ class Permissao extends Model
         return $this->belongsToMany(Perfil::class);
     }
 
+
+
 }

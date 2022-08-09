@@ -23,9 +23,9 @@ return new class extends Migration
         Schema::create('perfil_permissao', function (Blueprint $table) {
             $table->id();
             //Perfil
-            $table->foreignId('perfil_id')->constrained('perfis');
+            $table->foreignId('perfil_id')->constrained('perfis')->onDelete('cascade');
             //Ususário
-            $table->foreignId('permissao_id')->constrained('permissoes');
+            $table->foreignId('permissao_id')->constrained('permissoes')->onDelete('cascade');
             $table->timestamps();
         });
 

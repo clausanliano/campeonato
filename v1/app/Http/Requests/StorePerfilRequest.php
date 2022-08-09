@@ -13,7 +13,7 @@ class StorePerfilRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StorePerfilRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'string|min:3|max:25|required',
+            'descricao' => 'string|nullable',
+            'permissoes' => 'array|nullable',
         ];
     }
 }

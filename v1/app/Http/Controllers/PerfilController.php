@@ -5,83 +5,91 @@ namespace App\Http\Controllers;
 use App\Models\Perfil;
 use App\Http\Requests\StorePerfilRequest;
 use App\Http\Requests\UpdatePerfilRequest;
+use App\Models\Permissao;
+use App\Models\User;
 
 class PerfilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $perfis = Perfil::all();
         return view('perfil.index')->with(compact('perfis'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $perfil = new Perfil();
+        $permissoes = Permissao::all();
+        $permissoes_selecionadas = $perfil->permissoes->pluck('id')->toArray();
+
+        $usuarios = User::all();
+        $usuarios_selecionados = $perfil->usuarios->pluck('id')->toArray();
+
+        return view('perfil.edit')
+            ->with(compact(     'perfil',
+                                'permissoes',
+                                'permissoes_selecionadas',
+                                'usuarios',
+                                'usuarios_selecionados',
+                    ));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePerfilRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StorePerfilRequest $request)
     {
-        //
+        $perfil = Perfil::create($request->only(['nome', 'descricao']));
+        $perfil->permissoes()->sync($request['permissoes']);
+        $perfil->usuarios()->sync($request['usuarios']);
+
+        return redirect()->route('perfil.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Perfil  $perfil
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Perfil $perfil)
     {
-        //
+        $permissoes = Permissao::all();
+        $permissoes_selecionadas = $perfil->permissoes->pluck('id')->toArray();
+
+        $usuarios = User::all();
+        $usuarios_selecionados = $perfil->usuarios->pluck('id')->toArray();
+
+        return view('perfil.show')
+            ->with(compact(     'perfil',
+                                'permissoes',
+                                'permissoes_selecionadas',
+                                'usuarios',
+                                'usuarios_selecionados',
+                    ));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Perfil  $perfil
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Perfil $perfil)
     {
-        //
+        $permissoes = Permissao::all();
+        $permissoes_selecionadas = $perfil->permissoes->pluck('id')->toArray();
+
+        $usuarios = User::all();
+        $usuarios_selecionados = $perfil->usuarios->pluck('id')->toArray();
+
+        return view('perfil.edit')
+            ->with(compact(     'perfil',
+                                'permissoes',
+                                'permissoes_selecionadas',
+                                'usuarios',
+                                'usuarios_selecionados',
+                    ));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePerfilRequest  $request
-     * @param  \App\Models\Perfil  $perfil
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdatePerfilRequest $request, Perfil $perfil)
     {
-        //
+        $perfil->update($request->only(['nome', 'descricao']));
+        $perfil->permissoes()->sync($request['permissoes']);
+        $perfil->usuarios()->sync($request['usuarios']);
+        return redirect()->route('perfil.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Perfil  $perfil
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Perfil $perfil)
     {
-        //
+        $perfil->delete();
+        return redirect()->route('perfil.index');
     }
 }

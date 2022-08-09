@@ -18,4 +18,10 @@ class Perfil extends Model
         return $this->belongsToMany(Permissao::class);
     }
 
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }
