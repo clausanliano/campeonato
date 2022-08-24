@@ -24,7 +24,7 @@ class UpdatePerfilRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'string|min:3|max:25|required',
+            'nome' => 'string|min:3|max:25|required|unique:perfis,nome,'.$this->route('pefil.id'),
             'descricao' => 'string|nullable',
             'permissoes' => 'array|nullable',
         ];

@@ -5,39 +5,51 @@
 @section('content')
 
 <div class="pt-4 pb-4">
-<div class="card card-dark ">
-    <div class="card-header">
-        <div class="title">Usuários</div>
-    </div>
-    <div class="card-body">
-        <table id="tabela" class="table table-striped hover" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>e-mail</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($usuarios as $usuario)
+    <div class="card card-dark ">
+        <div class="card-header">
+            <div class="title">Usuários</div>
+        </div>
+        <div class="card-body">
+            <table id="tabela" class="table table-striped hover" style="width:100%">
+                <thead>
                     <tr>
-                        <td>{{ $usuario->name }}</td>
-                        <td>{{ $usuario->email }}</td>
-                        <td> - - </td>
+                        <th>Nome</th>
+                        <th>e-mail</th>
+                        <th>Qtd. Perfis</th>
+                        <th>Ações</th>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">Não há Itens registrados !!!</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-    <div class="card-footer">
-        <button class="btn btn-success">Inserir</button>
-    </div>
-</div>
+                </thead>
+                <tbody>
+                    @forelse ($usuarios as $usuario)
+                        <tr>
+                            <td>{{ $usuario->name }}</td>
+                            <td>{{ $usuario->email }}</td>
+                            <td>{{ $usuario->perfis->count() }}</td>
+                            <td width="30%" >
+                                <div class="form-inline" >
+                                    <a href="{{ route('usuario.show', $usuario->id)}}" class="btn ml-2 mr-2 btn-outline-primary">Mostrar</a>
+                                    <a href="{{ route('usuario.edit', $usuario->id)}}" class="btn ml-2 mr-2 btn-outline-warning">Editar</a>
 
+                                    <form action="{{ route('usuario.destroy', $usuario->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-outline-danger ml-2 mr-2">Apagar</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="2">Não há Itens registrados !!!</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a href="{{ route('usuario.create')}}" class="btn ml-2 mr-2 btn-outline-success">Inserir</a>
+        </div>
+    </div>
 </div>
 
 @stop
