@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissaoSeeder::class,
             PerfilSeeder::class,
+            ClubeSeeder::class,
         ]);
 
         $usuario->perfis()->sync([1]);

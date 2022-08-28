@@ -276,11 +276,11 @@ return [
 
 
 
-        ['header' => 'account_settings'],
+        ['header' => 'Cadastros'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Clubes',
+            'url'  => 'clube',
+            'icon' => 'fas fa-fw fa-university',
         ],
         [
             'text' => 'change_password',
