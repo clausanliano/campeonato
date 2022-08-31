@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Clube;
 use App\Http\Requests\StoreClubeRequest;
 use App\Http\Requests\UpdateClubeRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ClubeController extends Controller
 {
@@ -26,8 +27,14 @@ class ClubeController extends Controller
 
     public function store(StoreClubeRequest $request)
     {
-        $clube = Clube::create($request->validated());
-
+        $dados = $request->validated();
+        if ($request->hasFile('logotipo')){
+            $file = $request->file('logotipo');
+            $fileName = 'logo_'.uniqid().'.'. $file->getClientOriginalExtension();
+            $file->storeAs('imagens'.DIRECTORY_SEPARATOR.'logotipos', $fileName, 'public');
+            $dados['logotipo'] = $fileName;
+        }
+        Clube::create($dados);
         return redirect()->route('clube.index');
     }
 
@@ -45,12 +52,20 @@ class ClubeController extends Controller
 
     public function update(UpdateClubeRequest $request, Clube $clube)
     {
-        $clube->update($request->validated());
+        $dados = $request->validated();
+
+        if ($request->hasFile('logotipo')){
+            $request->file('logotipo')->storeAs('imagens'.DIRECTORY_SEPARATOR.'logotipos', $clube->logotipo, 'public');
+        }
+        $dados['logotipo'] = $clube->logotipo;
+
+        $clube->update($dados);
         return redirect()->route('clube.index');
     }
 
     public function destroy(Clube $clube)
     {
+        Storage::disk('public')->delete('imagens'.DIRECTORY_SEPARATOR.'logotipos'.DIRECTORY_SEPARATOR.$clube->logotipo);
         $clube->delete();
         return redirect()->route('clube.index');
     }

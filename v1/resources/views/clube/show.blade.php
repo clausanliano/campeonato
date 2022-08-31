@@ -68,6 +68,11 @@
             </div>
 
             <div class="form-group">
+                <label for="logotipo"></label>
+                <img src="{{ asset( $clube->caminho_logotipo() )}}" class="img-fluid" alt="Responsive image">
+            </div>
+
+            <div class="form-group">
                 <label for="observacao">Observação</label>
                 <textarea disabled class="form-control @error('observacao') is-invalid @enderror"
                 name="observacao" id="observacao" cols="30" rows="5">{{ old('observacao', $clube->observacao) }}</textarea>

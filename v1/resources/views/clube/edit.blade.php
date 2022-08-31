@@ -10,10 +10,10 @@
         <div class="title">Formulário de Clube</div>
     </div>
     @if ($clube->id)
-        <form action="{{ route('clube.update', $clube)}}" method="post">
+        <form action="{{ route('clube.update', $clube)}}" method="post" enctype="multipart/form-data">
         @method('put')
     @else
-        <form action="{{ route('clube.store')}}" method="post">
+        <form action="{{ route('clube.store')}}" method="post" enctype="multipart/form-data">
     @endif
         @csrf
         <div class="card-body">
@@ -74,6 +74,15 @@
                 @enderror
             </div>
 
+
+            <div class="form-group">
+                <label for="logotipo">Logotipo</label>
+                <input class="form-control-file @error('logotipo') is-invalid @enderror"
+                type="file" name="logotipo" id="logotipo" value="{{ old('logotipo', $clube->logotipo) }}">
+                @error('logotipo')
+                    <div class="badge badge-danger" >{{ $message }}</div>
+                @enderror
+            </div>
 
 
             <div class="form-group">

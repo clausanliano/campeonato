@@ -22,7 +22,7 @@ class UpdateClubeRequest extends FormRequest
             'email' => 'string|nullable',
             'instagram' => 'string|nullable',
             'twitter' => 'string|nullable',
-            'logotipo' => 'string|nullable',
+            'logotipo'  => 'image|nullable|dimensions:min_width=600,min_height=400',
         ];
     }
 }

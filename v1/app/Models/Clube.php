@@ -13,4 +13,14 @@ class Clube extends Model
 
     protected $fillable = ['nome', 'endereco', 'observacao', 'telefone', 'site', 'email', 'instagram', 'twitter', 'logotipo'];
 
+    public function pasta_logotipo()
+    {
+        return 'imagens'.DIRECTORY_SEPARATOR.'logotipos';
+    }
+
+    public function caminho_logotipo()
+    {
+        return 'storage'.DIRECTORY_SEPARATOR.$this->pasta_logotipo().DIRECTORY_SEPARATOR.$this->logotipo;
+    }
+
 }

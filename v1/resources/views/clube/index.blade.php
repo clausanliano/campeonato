@@ -23,7 +23,7 @@
                     @forelse ($clubes as $clube)
                         <tr>
                             <td>{{ $clube->nome }}</td>
-                            <td>{{ $clube->endereco }}</td>
+                            <td> <img src="{{ asset( $clube->caminho_logotipo() )}}" width="50" height="50"> </td>
                             <td>{{ $clube->telefone }}</td>
                             <td width="30%" >
                                 <div class="form-inline" >
@@ -40,7 +40,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="2">Não há Itens registrados !!!</td>
+                            <td colspan="4">Não há Itens registrados !!!</td>
                         </tr>
                     @endforelse
                 </tbody>
