@@ -36,7 +36,7 @@
             <div class="form-group">
                 <label for="telefone">Telefone</label>
                 <input class="form-control @error('telefone') is-invalid @enderror"
-                type="tel" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone" id="telefone" value="{{ old('telefone', $clube->telefone) }}">
+                type="tel" placeholder="(00)00000-0000" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}" name="telefone" id="telefone" value="{{ old('telefone', $clube->telefone) }}">
                 @error('telefone')
                     <div class="badge badge-danger" >{{ $message }}</div>
                 @enderror
@@ -77,14 +77,30 @@
 
             <div class="form-group">
                 <label for="logotipo">Logotipo</label>
-                <input class="form-control-file @error('logotipo') is-invalid @enderror"
-                type="file" name="logotipo" id="logotipo" value="{{ old('logotipo', $clube->logotipo) }}">
+                {{-- Imagem --}}
+                    <div class="text-center pt-4">
+                        <img src="{{ asset( $clube->caminho_logotipo() )}}" class="img-fluid rounded" alt="Responsive image">
+                    </div>
+                {{-- Input --}}
+                <input type="file" class="form-control-file" name="logotipo" id="logotipo">
+                {{--
+                <div class="input-group @error('logotipo') is-invalid @enderror">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="logotipo" id="logotipo">
+                        <label class="custom-file-label" for="inputGroupFile04">
+                            @if (isset($clube->logotipo))
+                                {{ $clube->logotipo }}
+                            @else
+                                Escolha o arquivo ...
+                            @endif
+                        </label>
+                    </div>
+                </div>
+                --}}
                 @error('logotipo')
-                    <div class="badge badge-danger" >{{ $message }}</div>
+                <div class="badge badge-danger" >{{ $message }}</div>
                 @enderror
             </div>
-
-
             <div class="form-group">
                 <label for="observacao">Observação</label>
                 <textarea class="form-control @error('observacao') is-invalid @enderror"

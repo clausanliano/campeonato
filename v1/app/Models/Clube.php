@@ -20,7 +20,11 @@ class Clube extends Model
 
     public function caminho_logotipo()
     {
-        return 'storage'.DIRECTORY_SEPARATOR.$this->pasta_logotipo().DIRECTORY_SEPARATOR.$this->logotipo;
+        if (isset($this->logotipo)) {
+            return 'storage'.DIRECTORY_SEPARATOR.$this->pasta_logotipo().DIRECTORY_SEPARATOR.$this->logotipo;
+        } else {
+            return 'storage'.DIRECTORY_SEPARATOR.$this->pasta_logotipo().DIRECTORY_SEPARATOR.'sem_imagem.png';
+        }
     }
 
 }

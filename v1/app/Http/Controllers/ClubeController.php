@@ -54,9 +54,16 @@ class ClubeController extends Controller
     {
         $dados = $request->validated();
 
+
         if ($request->hasFile('logotipo')){
-            $request->file('logotipo')->storeAs('imagens'.DIRECTORY_SEPARATOR.'logotipos', $clube->logotipo, 'public');
+            $file = $request->file('logotipo');
+
+            if (is_null( $clube->logotipo)){
+                $clube->logotipo = 'logo_'.uniqid().'.'. $file->getClientOriginalExtension();
+            }
+            $file->storeAs('imagens'.DIRECTORY_SEPARATOR.'logotipos', $clube->logotipo, 'public');
         }
+
         $dados['logotipo'] = $clube->logotipo;
 
         $clube->update($dados);
