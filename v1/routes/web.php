@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtletaController;
 use App\Http\Controllers\ClubeController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PermissaoController;
@@ -31,3 +32,4 @@ Route::resource('usuario', UsuarioController::class);
 
 
 Route::resource('clube', ClubeController::class);
+Route::resource('atleta', AtletaController::class);

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Atleta;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +27,8 @@ class DatabaseSeeder extends Seeder
             PermissaoSeeder::class,
             PerfilSeeder::class,
             ClubeSeeder::class,
+            AtletaSeeder::class,
+
         ]);
 
         $usuario->perfis()->sync([1]);

@@ -283,10 +283,18 @@ return [
             'icon' => 'fas fa-fw fa-university',
         ],
         [
+            'text' => 'Atletas',
+            'url'  => 'atleta',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+
+
+
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
