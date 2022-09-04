@@ -9,25 +9,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TreinadorFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition()
     {
-
-        $fake_cpf = '';
-        for ($i=0; $i < 10; $i++) {
-            $fake_cpf .= fake()->randomDigitNotNull();
-        }
-
         return [
-            'cpf'  => $fake_cpf,
+            'cpf'  => fake()->numerify('###########'),
             'nome'  => fake()->name(),
             'nascimento' => fake()->date(),
             'email' => fake()->email(),
-            'telefone' => fake()->phoneNumber(),
+            //'telefone' => fake()->phoneNumber(),
+            'telefone' => fake()->numerify('(##)#####-####'),
         ];
     }
 }

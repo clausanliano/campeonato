@@ -293,6 +293,11 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
+            'text' => 'Campeonato',
+            'url'  => 'campeonato',
+            'icon' => 'fas fa-fw fa-medal',
+        ],
+        [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',

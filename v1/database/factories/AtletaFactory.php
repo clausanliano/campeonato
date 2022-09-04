@@ -11,14 +11,8 @@ class AtletaFactory extends Factory
 {
     public function definition()
     {
-
-        $fake_cpf = '';
-        for ($i=0; $i < 10; $i++) {
-            $fake_cpf .= fake()->randomDigitNotNull();
-        }
-
         return [
-            'cpf'  => $fake_cpf,
+            'cpf'  => fake()->numerify('###########'),
             'nome'  => fake()->name(),
             'nascimento' => fake()->date(),
             'email' => fake()->email(),
