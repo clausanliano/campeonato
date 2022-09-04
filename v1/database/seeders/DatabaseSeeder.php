@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             AtletaSeeder::class,
             TreinadorSeeder::class,
             CampeonatoSeeder::class,
+            CategoriaSeeder::class,
 
         ]);
 

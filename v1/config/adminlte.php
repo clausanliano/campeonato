@@ -287,11 +287,19 @@ return [
             'url'  => 'clube',
             'icon' => 'fas fa-fw fa-university',
         ],
+
         [
             'text' => 'Atletas',
             'url'  => 'atleta',
             'icon' => 'fas fa-fw fa-users',
         ],
+        [
+            'text' => 'Categoria',
+            'url'  => 'categoria',
+            'icon' => 'fas fa-fw fa-list',
+        ],
+
+
         [
             'text' => 'Campeonato',
             'url'  => 'campeonato',
