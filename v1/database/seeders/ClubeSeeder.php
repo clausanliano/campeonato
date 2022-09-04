@@ -7,11 +7,6 @@ use Illuminate\Database\Seeder;
 
 class ClubeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         \App\Models\Clube::factory(10)->create();

@@ -298,6 +298,11 @@ return [
             'url'  => 'categoria',
             'icon' => 'fas fa-fw fa-list',
         ],
+        [
+            'text' => 'Aparelho',
+            'url'  => 'aparelho',
+            'icon' => 'far fa-circle',
+        ],
 
 
         [
