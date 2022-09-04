@@ -278,6 +278,11 @@ return [
 
         ['header' => 'Cadastros'],
         [
+            'text' => 'Treinador',
+            'url'  => 'treinador',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'Clubes',
             'url'  => 'clube',
             'icon' => 'fas fa-fw fa-university',
@@ -285,7 +290,7 @@ return [
         [
             'text' => 'Atletas',
             'url'  => 'atleta',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text' => 'change_password',
