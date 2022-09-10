@@ -24,6 +24,13 @@
                 type="text" name="nome" id="nome" value="{{ $prova->nome }}">
             </div>
             <div class="form-group">
+                <label for="qtd_atletas">Quantidade de Atletas</label>
+                <input disabled class="form-control"
+                type="text" name="qtd_atletas" id="qtd_atletas" value="{{ $prova->qtd_atletas }}">
+            </div>
+
+
+            <div class="form-group">
                 <label for="observacao">Observação</label>
                 <textarea disabled class="form-control name="observacao" id="observacao" cols="30" rows="5">{{ $prova->observacao }}</textarea>
             </div>

@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('provas', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->integer('qtd_atletas');
             $table->text('observacao')->nullable();
+
 
             $table->foreignId('campeonato_id')->constrained('campeonatos')->onDelete('cascade');
             /*

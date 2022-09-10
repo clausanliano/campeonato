@@ -14,6 +14,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Qtd. Atletas</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -21,6 +22,7 @@
                     @forelse ($provas as $prova)
                         <tr>
                             <td>{{ $prova->nome }}</td>
+                            <td>{{ $prova->qtd_atletas }}</td>
                             <td width="30%" >
                                 <div class="form-inline" >
                                     <a href="{{ route('prova.show', [$campeonato, $prova] )}}" class="btn ml-2 mr-2 btn-outline-primary">Mostrar</a>

@@ -17,14 +17,13 @@
     @endif
         @csrf
         <div class="card-body">
+
             <div class="form-group">
-
-                <div class="form-group">
-                    <label for="campeonato">Campeonato</label>
-                    <input disabled class="form-control"
-                    type="text" name="campeonato" id="campeonato" value="{{ $prova->campeonato->nome }}">
-                </div>
-
+                <label for="campeonato">Campeonato</label>
+                <input disabled class="form-control"
+                type="text" name="campeonato" id="campeonato" value="{{ $prova->campeonato->nome }}">
+            </div>
+            <div class="form-group">
                 <label for="nome">Nome</label>
                 <input class="form-control @error('nome') is-invalid @enderror"
                 type="text" name="nome" id="nome" value="{{ old('nome', $prova->nome) }}">
@@ -32,6 +31,16 @@
                     <div class="badge badge-danger" >{{ $message }}</div>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="qtd_atletas">Qtd. Atletas</label>
+                <input class="form-control @error('qtd_atletas') is-invalid @enderror"
+                type="number" name="qtd_atletas" id="qtd_atletas" value="{{ old('qtd_atletas', $prova->qtd_atletas) }}">
+                @error('qtd_atletas')
+                    <div class="badge badge-danger" >{{ $message }}</div>
+                @enderror
+            </div>
+
+
             <div class="form-group">
                 <label for="observacao">Observação</label>
                 <textarea class="form-control @error('observacao') is-invalid @enderror"

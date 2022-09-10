@@ -11,7 +11,7 @@ class Prova extends Model
 
     protected $table = 'provas';
 
-    protected $fillable = ['nome', 'observacao', 'campeonato_id'];
+    protected $fillable = ['nome', 'observacao', 'qtd_atletas', 'campeonato_id'];
 
 
     public function campeonato()
