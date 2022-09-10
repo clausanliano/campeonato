@@ -7,31 +7,25 @@
 <div class="pt-4 pb-4">
     <div class="card card-dark ">
         <div class="card-header">
-            <div class="title">Campeonato</div>
+            <div class="title">Provas do Campeonato <b>"{{ $campeonato->nome }}"</b></div>
         </div>
         <div class="card-body">
             <table id="tabela" class="table table-striped hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Abertura</th>
-                        <th>Encerramento</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($campeonatos as $campeonato)
+                    @forelse ($provas as $prova)
                         <tr>
-                            <td>{{ $campeonato->nome }}</td>
-                            <td>{{ $campeonato->abertura->format('d/m/Y H:i') }}</td>
-                            <td>{{ $campeonato->encerramento->format('d/m/Y H:i') }}</td>
-                            <td width="40%" >
+                            <td>{{ $prova->nome }}</td>
+                            <td width="30%" >
                                 <div class="form-inline" >
-                                    <a href="{{ route('prova.index', $campeonato->id)}}" class="btn ml-2 mr-2 btn-outline-success">Provas</a>
-                                    <a href="{{ route('campeonato.show', $campeonato->id)}}" class="btn ml-2 mr-2 btn-outline-primary">Mostrar</a>
-                                    <a href="{{ route('campeonato.edit', $campeonato->id)}}" class="btn ml-2 mr-2 btn-outline-warning">Editar</a>
-
-                                    <form action="{{ route('campeonato.destroy', $campeonato->id)}}" method="post">
+                                    <a href="{{ route('prova.show', [$campeonato, $prova] )}}" class="btn ml-2 mr-2 btn-outline-primary">Mostrar</a>
+                                    <a href="{{ route('prova.edit', [$campeonato, $prova])}}" class="btn ml-2 mr-2 btn-outline-warning">Editar</a>
+                                    <form action="{{ route('prova.destroy', $prova->id)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-outline-danger ml-2 mr-2">Apagar</button>
@@ -41,14 +35,15 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">Não há Itens registrados !!!</td>
+                            <td colspan="3">Não há Itens registrados !!!</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
         <div class="card-footer">
-            <a href="{{ route('campeonato.create')}}" class="btn ml-2 mr-2 btn-outline-success">Inserir</a>
+            <a href="{{ route('prova.create', $campeonato)}}" class="btn ml-2 mr-2 btn-outline-success">Inserir</a>
+            <a href="{{ route('campeonato.index')}}" class="btn ml-2 mr-2 btn-outline-danger">Voltar</a>
         </div>
     </div>
 </div>

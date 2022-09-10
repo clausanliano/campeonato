@@ -15,4 +15,11 @@ class Campeonato extends Model
 
     protected $dates = ['abertura', 'encerramento'];
 
+
+    public function provas()
+    {
+        return $this->hasMany(Prova::class, 'campeonato_id', 'id');
+    }
+
+
 }
